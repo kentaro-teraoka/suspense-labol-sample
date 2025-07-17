@@ -8,11 +8,6 @@ export type ApiOptionsType = {
   delay?: number;
 }
 
-// export const defaultApiOptions: ApiOptionsType = {
-//   success: true,
-//   delay: 1000,
-// }
-
 export const mockApiResponse = <T>(
   value: T,
   options: ApiOptionsType = {}

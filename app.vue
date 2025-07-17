@@ -2,7 +2,7 @@
   <UApp>
     <div class="grid min-h-screen grid-rows-[1fr_auto]">
       <Header />
-      <UContainer class="py-24">
+      <UContainer class="py-30">
         <NuxtPage />
       </UContainer>
       <Footer />
