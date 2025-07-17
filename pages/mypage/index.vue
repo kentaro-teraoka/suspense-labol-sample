@@ -1,7 +1,15 @@
 <template>
-  <h1>{{ route.name }}</h1>
+  <h1>{{ memberName }}さんのマイページ</h1>
 </template>
 
 <script lang="ts" setup>
-const route = useRoute()
+import { getMemberApi } from '~/api/member';
+
+const memberName = ref<string | null>(null)
+try {
+  const res = await getMemberApi()
+  memberName.value = res.data
+} catch(err) {
+  console.error(err)
+}
 </script>
