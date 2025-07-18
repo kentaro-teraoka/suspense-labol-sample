@@ -17,18 +17,8 @@
 </template>
 
 <script lang="ts" setup>
-import { type MemberInfoType } from '~/api/data/member';
-import { getMemberInfoApi } from '~/api/member';
 import { addComma } from '~/utils/addComma';
-import { useMemberStatus } from '~/composables/useMemberStatus';
+import { useMember } from '~/composables/useMember';
 
-const { memberStatus } = useMemberStatus()
-
-const memberInfo = ref<MemberInfoType | null>(null)
-try {
-  const res = await getMemberInfoApi()
-  memberInfo.value = res.data
-} catch (err) {
-  console.error(err)
-}
+const { memberStatus, memberInfo } = useMember()
 </script>
