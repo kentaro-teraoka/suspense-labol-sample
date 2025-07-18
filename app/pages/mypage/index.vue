@@ -20,11 +20,13 @@
 </template>
 
 <script lang="ts" setup>
-import { getMemberApi, getMemberStatusApi } from '~/api/member';
-import { type MemberStatusType } from '~/api/data/member';
+import { getMemberApi } from '~/api/member';
 import { type AnnounceType } from '~/api/data/announce';
 import { getImportantAnnouncesApi } from '~/api/announce';
 import StatusCard from '~/components/mypage/StatusCard.vue';
+import { useMemberStatus } from '~/composables/useMemberStatus';
+
+const { memberStatus } = useMemberStatus()
 
 const memberName = ref<string | null>(null)
 try {
@@ -38,14 +40,6 @@ const importantAnnounces = ref<AnnounceType[] | null>(null)
 try {
   const res = await getImportantAnnouncesApi()
   importantAnnounces.value = res.data
-} catch(err) {
-  console.error(err)
-}
-
-const memberStatus = ref<MemberStatusType | null>(null)
-try {
-  const res = await getMemberStatusApi()
-  memberStatus.value = res.data
 } catch(err) {
   console.error(err)
 }

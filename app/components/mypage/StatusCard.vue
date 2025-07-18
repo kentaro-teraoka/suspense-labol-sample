@@ -17,17 +17,12 @@
 </template>
 
 <script lang="ts" setup>
-import { type MemberInfoType, type MemberStatusType } from '~/api/data/member';
-import { getMemberStatusApi, getMemberInfoApi } from '~/api/member';
+import { type MemberInfoType } from '~/api/data/member';
+import { getMemberInfoApi } from '~/api/member';
 import { addComma } from '~/utils/addComma';
+import { useMemberStatus } from '~/composables/useMemberStatus';
 
-const memberStatus = ref<MemberStatusType | null>(null)
-try {
-  const res = await getMemberStatusApi()
-  memberStatus.value = res.data
-} catch(err) {
-  console.error(err)
-}
+const { memberStatus } = useMemberStatus()
 
 const memberInfo = ref<MemberInfoType | null>(null)
 try {
