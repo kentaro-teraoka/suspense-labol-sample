@@ -1,5 +1,9 @@
 <template>
-  <div class="rounded-3xl p-10 space-y-4 bg-gradient-to-br from-orange-300 to-yellow-500 text-white font-bold shadow-lg">
+  <div v-if="memberStatusPending || memberInfoPending">
+    <USkeleton class="w-xl h-50 rounded-3xl bg-stone-200" />
+  </div>
+
+  <div v-else class="grid place-items-center w-xl rounded-3xl p-10 space-y-4 bg-gradient-to-br from-orange-300 to-yellow-500 text-white font-bold shadow-lg">
     <p class="text-lg">あなたは{{ memberStatus?.isMember ? "本会員" : "仮会員" }}です</p>
 
     <div class="flex justify-start items-center gap-6">
@@ -20,5 +24,10 @@
 import { addComma } from '~/utils/addComma';
 import { useMember } from '~/composables/useMember';
 
-const { memberStatus, memberInfo } = useMember()
+const {
+  memberStatus,
+  memberStatusPending,
+  memberInfo,
+  memberInfoPending,
+} = useMember()
 </script>

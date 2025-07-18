@@ -1,5 +1,12 @@
 <template>
-  <div class="space-y-6">
+  <div
+    v-if="memberStatusPending || memberNamePending || importantAnnouncesPending"
+    class="space-y-6">
+    <USkeleton class="w-40 h-10 rounded-md bg-stone-200" />
+    <USkeleton class="w-120 h-20 rounded-md bg-stone-200" />
+  </div>
+
+  <div v-else class="space-y-6">
     <h1 class="text-4xl font-bold">{{ memberName }}さんのマイページ</h1>
     <ul class="space-y-2">
       <li
@@ -24,6 +31,14 @@ import StatusCard from '~/components/mypage/StatusCard.vue';
 import { useMember } from '~/composables/useMember';
 import { useAnnounce } from '~/composables/useAnnounce';
 
-const { memberStatus, memberName } = useMember()
-const { importantAnnounces } = useAnnounce()
+const {
+  memberStatus,
+  memberStatusPending,
+  memberName,
+  memberNamePending,
+} = useMember()
+const {
+  importantAnnounces,
+  importantAnnouncesPending,
+} = useAnnounce()
 </script>
