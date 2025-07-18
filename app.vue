@@ -1,5 +1,6 @@
 <template>
   <UApp>
+    <NuxtLoadingIndicator color="#efb100" />
     <div class="grid min-h-screen grid-rows-[1fr_auto]">
       <Header />
       <UContainer class="py-30">
