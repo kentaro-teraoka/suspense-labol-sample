@@ -8,7 +8,4 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
-  alias: {
-    '@app': '/<rootDir>/app',
-  },
 })
