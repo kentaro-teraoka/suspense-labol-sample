@@ -19,7 +19,8 @@
       <StatusCard />
       <UButton
         v-if="memberStatus?.isMember"
-        class="px-10 py-6 rounded-full font-bold text-xl">
+        class="px-10 py-6 rounded-full font-bold text-xl"
+        @click="router.push('/mypage/invoice/form')" >
         請求書買取申請
       </UButton>
     </div>
@@ -30,6 +31,8 @@
 import StatusCard from '~/components/mypage/StatusCard.vue';
 import { useMember } from '~/composables/useMember';
 import { useAnnounce } from '~/composables/useAnnounce';
+
+const router = useRouter();
 
 const {
   memberStatus,

@@ -14,6 +14,12 @@ const navigationItems = ref<NavigationMenuItem[]>([
   {
     label: "マイページ",
     to: "/mypage",
+    class: "px-4 py-3 bg-black rounded-full font-bold text-white",
+  },
+  {
+    label: "請求書買取申請",
+    to: "/mypage/invoice/form",
+    class: "px-4 py-3 bg-primary rounded-full font-bold text-white",
   },
 ])
 </script>
