@@ -20,8 +20,7 @@
         class="space-y-6">
     
         <UFormField label="請求書" name="invoice" size="xl">
-          <UInput
-            type="file"
+          <UFileUpload
             v-model="invoiceForm.invoice" />
         </UFormField>
     
@@ -49,9 +48,9 @@
         </UFormField>
     
         <UFormField label="エビデンス" name="evidence" size="xl">
-          <UInput
-            type="file"
-            v-model="invoiceForm.evidence" />
+          <UFileUpload
+            v-model="invoiceForm.evidence"
+            multiple />
         </UFormField>
       </UForm>
 

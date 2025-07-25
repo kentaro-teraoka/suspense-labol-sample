@@ -7,7 +7,7 @@ export type InvoiceFormType = {
   person: string,
   phone: string,
   purpose: string,
-  evidence: File | null,
+  evidence: File[] | null,
 }
 
 export const invoiceFormHistories: InvoiceFormType[] = [
