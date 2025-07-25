@@ -45,3 +45,9 @@ export const invoiceFormHistories: InvoiceFormType[] = [
     evidence: null,
   },
 ]
+
+export const purposeOptions: string[] = [
+  "資金調達",
+  "設備投資",
+  "その他",
+]

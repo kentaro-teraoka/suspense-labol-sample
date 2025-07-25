@@ -1,5 +1,5 @@
 import { type InvoiceFormType } from "../api/data/invoice";
-import { getInvoiceFormApi } from "../api/invoice";
+import { getInvoiceFormApi, getPurposeOptionsApi } from "../api/invoice";
 
 const defaultInvoiceForm: InvoiceFormType = {
   id: '',
@@ -23,8 +23,15 @@ export const useInvoice = (invoiceId: string = "") => {
     return invoiceForm.value
   })
 
+  const { data: purposeOptions, pending: purposeOptionsPending } = useAsyncData<string[]>("purposeOptions", async () => {
+    const res = await getPurposeOptionsApi({success: true, delay: 1000});
+    return res.data ?? [];
+  })
+
   return {
     invoiceForm,
     invoiceFormPending,
+    purposeOptions,
+    purposeOptionsPending,
   }
 }

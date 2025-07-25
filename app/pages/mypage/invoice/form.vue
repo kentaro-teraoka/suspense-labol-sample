@@ -1,5 +1,5 @@
 <template>
-  <div v-if="invoiceFormPending" class="space-y-6">
+  <div v-if="invoiceFormPending || purposeOptionsPending" class="space-y-6">
     <div v-for="i in 5" class="space-y-4">
       <USkeleton class="w-40 h-5 rounded-md bg-stone-200" />
       <USkeleton class="w-120 h-10 rounded-md bg-stone-200" />
@@ -55,15 +55,18 @@
 </template>
 
 <script lang="ts" setup>
-import { type InvoiceFormType } from '~/api/data/invoice';
 import { useInvoice } from '~/composables/useInvoice';
 
 const route = useRoute();
 const invoiceId = ref<string | null>(route.query.invoiceId as string | null);
 
-const { invoiceForm, invoiceFormPending } = useInvoice(invoiceId.value ?? "");
+const {
+  invoiceForm,
+  invoiceFormPending,
+  purposeOptions,
+  purposeOptionsPending,
+} = useInvoice(invoiceId.value ?? "");
 
 const isJuridicPerson = ref<boolean>(false)
 const usageOptions = ref<string[]>(["個人", "法人"])
-const purposeOptions = ref<string[]>([])
 </script>

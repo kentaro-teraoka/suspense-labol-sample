@@ -6,6 +6,7 @@ import {
 import {
   type InvoiceFormType,
   invoiceFormHistories,
+  purposeOptions,
 } from "~/api/data/invoice"
 
 export const getInvoiceFormApi = (
@@ -17,4 +18,10 @@ export const getInvoiceFormApi = (
   return invoiceForm
     ? mockApiResponse<InvoiceFormType>(invoiceForm, options)
     : mockApiResponse<null>(null, options)
+}
+
+export const getPurposeOptionsApi = (
+  options: ApiOptionsType = {}
+): Promise<ResponseType<string[] | null>> => {
+    return mockApiResponse<string[]>(purposeOptions, options)
 }
