@@ -6,32 +6,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  setup(props, context) {
-    // アクセス自体はsetup内でできる
-    console.log(props.incrementBtnText, props.decrementBtnText, props.resetBtnText);
-
-    // emitへのアクセスは、context経由で行う
-    context.emit('increment');
-
-    return {
-    };
+<script setup>
+const props = defineProps({
+  incrementBtnText: {
+    type: String,
+    default: "Increment"
   },
-  props: {
-    incrementBtnText: {
-      type: String,
-      default: "Increment"
-    },
-    decrementBtnText: {
-      type: String,
-      default: "Decrement"
-    },
-    resetBtnText: {
-      type: String,
-      default: "Reset",
-    },
+  decrementBtnText: {
+    type: String,
+    default: "Decrement"
   },
-  emits: ["increment", "decrement", "reset"],
-}
+  resetBtnText: {
+    type: String,
+    default: "Reset",
+  },
+});
+
+const emit = defineEmits(["increment", "decrement", "reset"]);
 </script>
