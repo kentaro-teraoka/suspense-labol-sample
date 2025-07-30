@@ -8,6 +8,13 @@
 
 <script>
 export default {
+  setup(props) {
+    // アクセス自体はsetup内でできる
+    console.log(props.incrementBtnText, props.decrementBtnText, props.resetBtnText);
+
+    return {
+    };
+  },
   props: {
     incrementBtnText: {
       type: String,
