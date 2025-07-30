@@ -21,15 +21,24 @@
 import TestButtons from "~/components/TestButtons.vue";
 
 export default {
+  setup() {
+    const message = ref("")
+    const count = ref(0)
+
+    return {
+      message,
+      count,
+    };
+  },
   components: {
     TestButtons,
   },
-  data() {
-    return {
-      message: "",
-      count: 0,
-    };
-  },
+  // data() {
+  //   return {
+  //     message: "",
+  //     count: 0,
+  //   };
+  // },
   computed: {
     doubleCount() {
       return this.count * 2;
