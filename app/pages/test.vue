@@ -24,10 +24,12 @@ export default {
   setup() {
     const message = ref("")
     const count = ref(0)
+    const doubleCount = computed(() => count.value * 2);
 
     return {
       message,
       count,
+      doubleCount,
     };
   },
   components: {
@@ -39,11 +41,11 @@ export default {
   //     count: 0,
   //   };
   // },
-  computed: {
-    doubleCount() {
-      return this.count * 2;
-    }
-  },
+  // computed: {
+  //   doubleCount() {
+  //     return this.count * 2;
+  //   }
+  // },
   methods: {
     increment() {
       this.count++;
