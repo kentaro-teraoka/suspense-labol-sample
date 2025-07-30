@@ -8,9 +8,12 @@
 
 <script>
 export default {
-  setup(props) {
+  setup(props, context) {
     // アクセス自体はsetup内でできる
     console.log(props.incrementBtnText, props.decrementBtnText, props.resetBtnText);
+
+    // emitへのアクセスは、context経由で行う
+    context.emit('increment');
 
     return {
     };
