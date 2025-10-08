@@ -13,7 +13,16 @@
       <UInput v-model="formData.email" type="email" />
     </UFormField>
     <UFormField label="Password" name="password">
-      <UInput v-model="formData.password" type="password" />
+      <UInput v-model="formData.password" :type="isPasswordVisible ? 'text' : 'password'">
+        <template #trailing>
+          <UButton
+            :icon="isPasswordVisible ? 'i-lucide-eye-off' : 'i-lucide-eye'"
+            variant="link"
+            color="neutral"
+            @click="isPasswordVisible = !isPasswordVisible"
+          />
+        </template>
+      </UInput>
     </UFormField>
     <UFormField label="Newsletter" name="newsletter">
       <UCheckbox v-model="formData.newsletter" />
@@ -60,4 +69,6 @@ const formSchema = v.object({
   ),
   newsletter: v.boolean(),
 })
+
+const isPasswordVisible = ref(false)
 </script>
