@@ -1,5 +1,5 @@
 <template>
-  <UForm :state="formData" :schema="formSchema" @submit="onSubmit">
+  <UForm :state="formData" :schema="formSchema" @submit="onSubmit" @error="onError">
     <UFormField label="First Name" name="firstName">
       <UInput v-model="formData.firstName" />
     </UFormField>
@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import * as v from 'valibot'
-import type { FormSubmitEvent } from '@nuxt/ui'
+import type { FormErrorEvent, FormSubmitEvent } from '@nuxt/ui'
 
 // form state
 const formData = ref({
@@ -81,6 +81,10 @@ type FormSchemaType = v.InferOutput<typeof formSchema>
 // form submission handler
 const onSubmit = (e: FormSubmitEvent<FormSchemaType>) => {
   console.log('Form submitted:', e.data)
+}
+
+const onError = (e: FormErrorEvent) => {
+  console.log('Form errors:', e.errors)
 }
 
 // password visibility toggle
