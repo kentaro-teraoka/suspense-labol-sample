@@ -1,5 +1,5 @@
 <template>
-  <UForm :state="formData" :schema="formSchema">
+  <UForm :state="formData" :schema="formSchema" @submit="onSubmit">
     <UFormField label="First Name" name="firstName">
       <UInput v-model="formData.firstName" />
     </UFormField>
@@ -27,12 +27,18 @@
     <UFormField label="Newsletter" name="newsletter">
       <UCheckbox v-model="formData.newsletter" />
     </UFormField>
+
+    <UButton type="submit">
+      Submit
+    </UButton>
   </UForm>
 </template>
 
 <script lang="ts" setup>
 import * as v from 'valibot'
+import type { FormSubmitEvent } from '@nuxt/ui'
 
+// form state
 const formData = ref({
   firstName: '',
   lastName: '',
@@ -42,6 +48,7 @@ const formData = ref({
   newsletter: false,
 })
 
+// form validation schema
 const formSchema = v.object({
   firstName: v.pipe(
     v.string(),
@@ -69,6 +76,13 @@ const formSchema = v.object({
   ),
   newsletter: v.boolean(),
 })
+type FormSchemaType = v.InferOutput<typeof formSchema>
 
+// form submission handler
+const onSubmit = (e: FormSubmitEvent<FormSchemaType>) => {
+  console.log('Form submitted:', e.data)
+}
+
+// password visibility toggle
 const isPasswordVisible = ref(false)
 </script>
